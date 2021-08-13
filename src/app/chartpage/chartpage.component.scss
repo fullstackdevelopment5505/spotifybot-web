@@ -1,0 +1,55 @@
+table {
+  width: 65%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 900px;
+  border-radius: 5px;
+  border: 0px #000000;
+  background-color: #171717;
+  vertical-align: center;
+}
+
+tr{
+  border:0;
+  color: white;
+  height: 60px;
+}
+
+tr .headerTitle{
+  color: #ffffff ;
+  border:0;
+  font: 24px Nunito !important;
+  font-weight: bold !important;
+  padding-left: 30px;
+
+}
+
+tr .headerButton{
+  border:0;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+td{
+  border-color: #000000;
+}
+
+input {
+  background-color: black;
+  color: white;
+  border:0;
+  border-radius: 5px;
+  height: 60px;
+  font: 16px "TT Commons" !important;
+}
+
+input.daily{
+  background-color: #343434;
+
+}
+
+tr.datarow{
+  height: 82px;
+  font-size: 16px;
+}

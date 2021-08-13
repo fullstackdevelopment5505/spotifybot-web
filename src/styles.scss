@@ -1,0 +1,160 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~ngx-toastr/toastr.css";
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import "~bootstrap/dist/css/bootstrap.css";
+@import "assets/font/TTCommons/stylesheet.css";
+@import "assets/font/Nunito/stylesheet.css";
+
+.mat-dialog-container{
+  padding: 0px !important;
+  background-color: #1C1C1C !important;
+  border-radius: 7px;
+}
+
+.mat-dialog-content{
+  padding: 0px !important;
+}
+
+.mat-tab-label-content{
+  color: #1ECC5C;
+}
+
+.cdk-overlay-pane{
+  position: relative !important;
+}
+
+mat-ink-bar{
+  background-color: #1ED760 !important;
+}
+
+.mat-tab-label-content:active{
+  color: #FFFFFF !important;
+
+}
+
+.mat-tab-label{
+  height: 80px !important;
+  font-size: 21px;
+}
+
+.mat-tab-label-content{
+  color: #1DCB5A !important;
+}
+
+.mat-tab-link{
+  color: #FF0000 !important;
+
+}
+
+
+div.container{
+  width: 95% !important;
+  margin-left: 50px !important;
+  margin-right: 50px !important;
+  align-content: center !important;
+  text-align: center !important;
+  max-width: 2000px !important;
+}
+
+
+//css for showing tooltip
+.tooltipshow {
+  position: relative ;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltipshow .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #FFFFFF;
+  color: #000;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -40%;
+  left: 180%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  max-width: 61px;
+  width: 61px;
+  max-height: 43px;
+  height: 43px;
+  font-family: 'TT Commons';
+}
+
+.tooltipshow .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #FFFFFF transparent transparent transparent;
+  font-family: 'TT Commons';
+}
+
+.tooltipshow:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+//css for showing tooltip menu
+.tooltipMenu {
+  position: relative ;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltipMenu .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: #FFFFFF;
+  color: #000;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -90%;
+  left: 100%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltipMenu .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #FFFFFF transparent transparent transparent;
+}
+
+.tooltipMenu:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+//dialog close button  setting --- two setting
+img.closeButton{
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  transform: translate(50%, -50%);
+  background: red;
+  z-index: 1 ;
+  width: 47px;
+  height: 47px;
+  border-radius: 7px;
+}
+

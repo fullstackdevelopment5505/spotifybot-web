@@ -1,0 +1,122 @@
+table {
+  width: 95%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 900px;
+  border-radius:7px;
+  border: 0px #000000;
+  background-color: #171717;
+  vertical-align: center;
+}
+
+tr{
+  border:0;
+  color: white;
+  height: 60px;
+}
+
+tr .headerTitle{
+  color: #ffffff ;
+  border:0;
+  font: 24px Nunito;
+  font-weight: bold;
+}
+
+tr .headerButton{
+  border:0;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+td{
+  border-color: #000000;
+  padding: 8px 10px;
+}
+
+.header-td{
+  font: 21px TT Commons !important;
+  font-weight: 600;
+  font-family: normal;
+}
+
+input {
+  background-color: black;
+  color: white;
+  border:0;
+  border-radius: 5px;
+  height: 50px;
+  font: 16px "TT Commons" !important;
+  font-weight: 600;
+}
+
+select{
+  background-color: #343434;
+  color: #ffffff;
+  border: 0px;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.tooltipMenu{
+  background-color: #343434;
+  line-height: 44px;
+  border-radius:5px;
+  min-width: 174px;
+  width: 174px;
+  height: 48px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  max-width: 78px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 78px;
+  height:70px;
+  top: 50%;
+  left: 70%;
+}
+
+.selState {
+  color: #1ECC5C;
+  padding: 8px 5px;
+  height: 40px;
+  line-height: 24px;
+  font-size: 16px;
+  border-radius: 5px ;
+  min-width: 110px !important;
+  max-width: 120px;
+  width: 120px ;
+  display: inline-block;
+  text-align: left;
+  font: 16px "TT Commons" !important;
+  font-weight: 600 !important;
+}
+
+.stateSelector {
+  margin-left: 1px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+
+}
+
+.menuButton{
+  padding: 3px 5px;
+  max-height: 32px ;
+  line-height: 30px;
+}
+
+.menuButtonText{
+  color: #343434;
+  font-size: 12px;
+  padding-right: 0px ;
+  margin-right: 0px ;
+  max-width: 50px;
+
+}
+
+.show {display: block;}

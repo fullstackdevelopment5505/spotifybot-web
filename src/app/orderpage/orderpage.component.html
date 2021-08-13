@@ -1,0 +1,70 @@
+<div class="container table-responsive table-editable" style="margin-top: 100px;  width: 1800px;height: 100%;">
+  <div style="border-radius: 30px;">
+    <table class="table-bordered table-responsive-md table-striped text-center ">
+      <thead>
+      <tr style="line-height: 80px; height: 90px;">
+        <th class="text-left headerTitle" colspan="5">Order
+          <div class="headerButton2" id="button1" style="width: 174px;margin-left: 40px;" (click)="stateChange(1)">
+            <div class="headerButton-text" >Family Owner</div>
+            <span class="mat-icon-button headerSpan">{{familyOwnerCount}}</span>
+          </div>
+          <div class="headerButton2" id="button2" style="width: 174px" (click)="stateChange(2)">
+            <div class="headerButton-text" >Family Member</div>
+            <span class="mat-icon-button headerSpan">{{familyMemberCount}}</span>
+          </div>
+          <div class="headerButton2" id="button3" style="width: 174px" (click)="stateChange(3)">
+            <div class="headerButton-text" >Premium</div>
+            <span class="mat-icon-button headerSpan">{{premiumCount}}</span>
+          </div>
+          <div class="headerButton2" id="button4" style="width: 174px" (click)="stateChange(4)">
+            <div class="headerButton-text" >Premium Duo</div>
+            <span class="mat-icon-button headerSpan">{{premiumDuoCount}}</span>
+          </div>
+          <div class="headerButton2" id="button5" style="width: 121px" (click)="stateChange(5)">
+            <div class="headerButton-text" style="width: 75px;" >Free</div>
+            <span class="mat-icon-button headerSpan">{{freeCount}}</span>
+          </div>
+          <button class="btn btn-success" style="line-height: 40px; width:181px; height: 55px; margin-left: 70px;border: none;font: 18px 'TT Commons'; font-weight: bold;" (click)="addNewOrderDlg()">
+            Add New Track
+          </button>
+        </th>
+      </tr>
+      </thead>
+      <tr style="font-size: 18px">
+        <td class="text-left header-td" style="padding-left: 30px">Track IDs</td>
+        <td class="text-left header-td" style="padding-left: 30px">Track Title</td>
+        <td class="text-left header-td" style="padding-left: 20px">Play</td>
+        <td class="text-left header-td" style="padding-left: 20px">Account</td>
+        <td class="text-left header-td" style="width: 200px;padding-left: 70px">Action</td>
+      </tr>
+      <tr *ngFor="let order of allOrders; let id = index" style="font-size: 16px">
+        <td class="datatd">
+          <input type="text" id="trackid_{{id}}" size="40" value="{{order.trackIds}}" style="width: 309px; height: 48px;" class="text-left" (keyup)="changeValue(id, 'Username', $event)" (blur)="updateList(id, 'Username', $event)">
+        </td>
+        <td class="datatd">
+          <input type="text" id="tracktitle_{{id}}" size="80" value="{{order.trackTitle}}" style="width: 309px; height: 48px;" class="text-left" (keyup)="changeValue(id, 'Username', $event)" (blur)="updateList(id, 'Username', $event)">
+        </td>
+        <td class="datatd">
+          <input type="text" id="playcount_{{id}}" size="10" value="{{order.requiredPlayCount}}" style="width: 139px; height: 48px;" class="text-center" (keyup)="changeValue(id, 'AccountType', $event)" (blur)="updateList(id, 'AccountType', $event)">
+        </td>
+        <td class="datatd">
+          <input type="text" size="20" value="{{useAccount[id]}}/{{allAccountCount}}" class="text-center" style="background-color: #343434;width: 174px; height: 48px;" (keyup)="changeValue(id, 'AccountType', $event)" (blur)="updateList(id, 'AccountType', $event)" readonly>
+        </td>
+        <td class="datatd">
+          <button mat-icon-button (click)="redirectToUpdate(order, id)">
+            <img src="assets/img/edit.png">
+          </button>
+          <button mat-icon-button (click)="redirectToDelete(order)">
+            <img src="assets/img/delete.png">
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan='5' align="left" style="padding-left:25px; line-height: 90px;">
+          <button type="button" class="btn btn-dark" style="background-color: #000000;border: none; width: 170px; height: 53px; line-height: 30px; font:21px 'TT Commons' !important;" (click)="ResetData()">Reset</button>&nbsp;
+          <button type="button" class="btn btn-success" style=" width: 170px; height: 53px; line-height: 30px;font:21px 'TT Commons' !important;" (click)="SubmitData()">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

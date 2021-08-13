@@ -1,0 +1,105 @@
+<div class="container table-responsive table-editable" style="margin-top: 100px;  width: 1800px;height: 100%;">
+  <div style="border-radius: 30px;">
+    <table class="table-bordered table-responsive-md table-striped text-center ">
+    <tr>
+      <th class="text-left headerTitle" style="padding-left: 40px" colspan="2">Accounts</th>
+      <th class="text-right headerButton" colspan="9">
+        <a mat-list-item (click)="addAccountDlgShow()">
+          <Button type="button" class="btn btn-success" style="width: 181px; height: 55px; border-radius: 7px; font: 24px 'TT Commons' !important; font-weight: 600 !important;">Upload</Button>
+        </a>
+      </th>
+    </tr>
+    <tr style="font-size: 18px;">
+      <!--<td class="text-center">no</td>-->
+      <td class="text-left header-td" style="padding-left: 30px">AccountId</td>
+      <td class="text-left header-td" style="padding-left: 40px">Username</td>
+      <td class="text-left header-td" style="padding-left: 40px">Country</td>
+      <td class="text-left header-td" style="padding-left: 30px">AccountType</td>
+      <td class="text-left header-td" style="padding-left: 25px">ProxyId</td>
+      <td class="text-left header-td" style="padding-left: 40px">Country</td>
+      <td class="text-left header-td" style="padding-left: 35px">IPAddress</td>
+      <td class="text-left header-td" style="padding-left: 30px">Port</td>
+      <td class="text-left header-td" style="padding-left: 35px">Status</td>
+      <!--<td class="text-center">Action</td>-->
+    </tr>
+    <tr *ngFor="let person of accounts; let id = index"  style="font-size: 16px;">
+
+      <td>
+        <input type="text" id="uAccountId{{id}}" size="10" value="{{person.accountId}}" class="text-center" style="width: 139px; height: 48px" readonly>
+      </td>
+      <td>
+        <input type="text" id="uAccountEmail{{id}}" size="30" value="{{person.email}}" class="text-left" style="padding: 0px 15px; width: 216px; height: 48px" (keyup)="changeValue(id, 'Username', $event)" (blur)="updateList(id, 'Username', $event)">
+      </td>
+      <td>
+        <span >
+          <img src="assets/img/country/{{person.country | lowercase}}_44x30.png" style="width: 56px; height: 40px">
+        </span>
+      </td>
+      <td>
+        <input type="text" id="uAccountType{{id}}" size="20" value="{{person.accountType}}" style="width: 139px; height: 48px" class="text-center" (keyup)="changeValue(id, 'AccountType', $event)" (blur)="updateList(id, 'AccountType', $event)">
+      </td>
+      <td>
+        <input type="text" id="uCurrentProxyId{{id}}" size="10" value="{{person.currentProxyId}}" style="width: 85px; height: 48px" class="text-center" readonly>
+      </td>
+      <td>
+        <span ><!--{{person.country}}-->
+          <img src="assets/img/country/{{person.proxyCountry | lowercase}}_44x30.png" style="width: 56px; height: 40px">
+        </span>
+      </td>
+      <td>
+        <input type="text" id="uIpAddress{{id}}" size="25" value="{{person.currentProxy.ipAddress}}" style="width: 150px; height: 48px" class="text-center" (keyup)="changeValue(id, 'IpAddress', $event)" (blur)="updateList(id, 'IpAddress', $event)">
+      </td>
+      <td>
+        <input type="text" id="uPort{{id}}" size="15" value="{{person.currentProxy.port}}" class="text-center" style="width: 91px; height: 48px" (keyup)="changeValue(id, 'Port', $event)" (blur)="updateList(id, 'Port', $event)">
+      </td>
+      <td align="center">
+        <div class="tooltipMenu">
+          <div class="selState" *ngIf="person.playerStatus == 'LoggedIn';else elseBlock">{{person.playerStatus}}&nbsp;</div>
+          <ng-template #elseBlock><div class="selState" style="color: #FF0000;">{{person.playerStatus}}&nbsp;</div></ng-template>
+          <button mat-icon-button class="stateSelector" (click)="menuShow(id)">
+            <img src="assets/img/combo_icon.png">
+          </button>
+          <div id="myDropdown{{id}}" class="text-left dropdown-content">
+            <div class="menuButton" (click)="StatusChange(1,id,person.accountId)">
+              <img src="assets/img/play_sel.png" style="padding:2px 5px;" id='menuButtonIconId1'>
+              <span class="menuButtonText" style="cursor: pointer;">Edit</span>
+            </div>
+            <div class="menuButton" (click)="StatusChange(2,id,person.accountId)">
+              <img src="assets/img/pause_none.png" style="padding: 2px 5px;" id='menuButtonIconId2'>
+              <span class="menuButtonText" style="cursor: pointer;">Delete</span>
+            </div>
+          </div>
+        </div>
+      </td>
+
+      <!--crud sample-->
+      <!--<td>-->
+
+        <!--<button mat-icon-button color="accent" (click)="selectAccount(person)">-->
+          <!--<mat-icon class="mat-18">reorder</mat-icon>-->
+        <!--</button>-->
+
+        <!--<button mat-icon-button (click)="redirectToUpdate(id)">-->
+          <!--<img src="assets/img/edit.png">-->
+        <!--</button>-->
+        <!--<button mat-icon-button (click)="redirectToDelete(person.AccountId)">-->
+          <!--<img src="assets/img/delete.png">-->
+        <!--</button>-->
+      <!--</td>-->
+    </tr>
+
+  </table>
+  </div>
+  <br>
+  <div class="card text-center" *ngIf="selectedAccount" style="background-color: rgb(44, 43, 43);color:bisque">
+    <div class="card-header">User Account Id : # {{selectedAccount.accountId}}
+    </div>
+    <div class="card-block">
+      <h4 class="card-title"> Email Address : {{selectedAccount.email}}</h4>
+        <p class="card-text">
+            password : {{selectedAccount.password}} ; Proxy Id : {{ selectedAccount.currentProxyId }}
+        </p>    
+    </div>  
+  </div>
+
+</div>

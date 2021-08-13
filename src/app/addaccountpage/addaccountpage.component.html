@@ -1,0 +1,124 @@
+<img src="assets/img/close.png" class="closeButton" (click)="close()">
+<mat-dialog-content>
+  <mat-tab-group animationDuration="0ms" mat-stretch-tabs style="padding: 5px 10px;">
+    <mat-tab label="Bulk Upload" style="font: 21px 'TT Commons' !important;font-weight: 600 !important;">
+      <div class="form-group uploadpart ">
+        <span class="filename" id="myfilename"></span>
+        <div class="upload-btn-wrapper">
+          <button class="btn upload-btn" (click)="DataSubmit()">Download Template</button>
+          <input type="file" id="myfile" name="myfile" accept=".xlsx,.xls,.csv" ngf-max-size="20MB" (change)="prepareSubmit($event)" />
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Individual Upload" style="padding: 5px 10px;font: 21px 'TT Commons' !important;font-weight: 600 !important;" >
+      <div class="userpart">
+      <form [formGroup]="angForm" (ngSubmit) = 'save()'>
+        <div class="row" style="magrin: 0px; height: 106px;">
+          <div class="col-7">
+            <div class="form-group">
+              <label class="contTitle">Username</label>
+              <input matInput type="text" formControlName="username" class="form-control left" [ngClass] ="{'is-invalid':submitted && angForm.controls.username.errors}" >
+              <div *ngIf="submitted && angForm.controls.username.errors" class="invalid-feedback">
+                <div *ngIf="angForm.controls.username.errors.required">Username is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5" style="padding: 0px 5px;">
+            <div class="form-group">
+              <label class="contTitle" >Country</label><br>
+              <!--<input matInput type="text" formControlName="country" class="form-control right" [ngClass] ="{'is-invalid':submitted && angForm.controls.country.errors}" >-->
+              <select  matInput name="usercountry" id="usercountry" class="form-control" required>
+                  <option *ngFor="let country of countrys; let id = index" [value]="country.countryCode">{{country.countryName}}</option>
+              </select>
+              <!--<div *ngIf="submitted && angForm.controls.usercountry.errors" class="invalid-feedback">-->
+                <!--<div *ngIf="angForm.controls.usercountry.errors.required">Country is required</div>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+        <div class="row" style="magrin: 0px; height: 106px;">
+          <div class="col-7">
+            <div class="form-group">
+              <label class="contTitle">Password</label>
+              <input matInput type='Password' formControlName="pass" class="form-control left" [ngClass]="{'is-invalid':submitted && angForm.controls.pass.errors}">
+              <div *ngIf="submitted && angForm.controls.pass.errors" class="invalid-feedback">
+                <div *ngIf="angForm.controls.pass.errors.required">Password is required</div>
+                <div *ngIf="angForm.controls.pass.errors.minlength">Password must be at least 8 characters</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5" style="padding: 0px 5px;">
+            <div class="form-group">
+              <label class="contTitle">AccountType</label>
+              <!--<input matInput formControlName="accountType" class="form-control right" [ngClass]="{'is-invalid':submitted && angForm.controls.accountType.errors}">-->
+              <!--<div *ngIf="submitted && angForm.controls.accountType.errors" class="invalid-feedback">-->
+                <!--<div *ngIf="angForm.controls.accountType.errors.required">Account type is required</div>-->
+              <!--</div>-->
+              <select  matInput name="userAccountType" id="userAccountType" class="form-control" >
+                <option *ngFor="let accountType of accountTypes; let id = index" [value]="accountType.id">{{accountType.type}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="magrin: 0px; height: 106px;">
+          <div class="col-4">
+            <div class="form-group">
+              <label class="contTitle">Proxy IpAddress</label>
+              <input matInput formControlName="proxyIp" class="form-control" style="min-width:170px" [ngClass]="{'is-invalid':submitted && angForm.controls.proxyIp.errors}">
+              <div *ngIf="submitted && angForm.controls.proxyIp.errors" class="invalid-feedback">
+                <div *ngIf="angForm.controls.proxyIp.errors.required">Proxy Ip Address is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label class="contTitle">Proxy Port</label>
+              <input matInput formControlName="proxyPort" class="form-control" style="min-width:110px" [ngClass]="{'is-invalid':submitted && angForm.controls.proxyPort.errors}">
+              <div *ngIf="submitted && angForm.controls.proxyPort.errors" class="invalid-feedback">
+                <div *ngIf="angForm.controls.proxyPort.errors.required">Proxy Port is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5" style="padding: 0px 5px;">
+            <div class="form-group">
+              <label class="contTitle">Proxy Country</label>
+              <!--<input matInput formControlName="proxyCountry" class="form-control right" [ngClass]="{'is-invalid':submitted && angForm.controls.proxyCountry.errors}">-->
+              <select  matInput name="proxyCountry" id="proxyCountry" class="form-control" required>
+                <option *ngFor="let country of countrys; let id = index" [value]="country.countryCode">{{country.countryName}}</option>
+              </select>
+              <!--<div *ngIf="submitted && angForm.controls.proxyCountry.errors" class="invalid-feedback">-->
+                <!--<div *ngIf="angForm.controls.proxyCountry.errors.required">Proxy Country is required</div>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="magrin: 0px; height: 106px;">
+          <div class="col-7">
+            <div class="form-group">
+              <label class="contTitle">Proxy Username</label>
+              <input matInput formControlName="proxyUsername" class="form-control left" [ngClass]="{'is-invalid':submitted && angForm.controls.proxyUsername.errors}">
+              <div *ngIf="submitted && angForm.controls.proxyUsername.errors" class="invalid-feedback">
+                <div *ngIf="angForm.controls.proxyUsername.errors.required">Proxy User Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-5" style="padding: 0px 5px;">
+            <div class="form-group">
+              <label class="contTitle">Proxy User Password</label>
+              <input matInput type='Password' formControlName="proxyUserPwd" class="form-control right" [ngClass]="{'is-invalid':submitted && angForm.controls.proxyUserPwd.errors}">
+              <div *ngIf="submitted && angForm.controls.proxyUserPwd.errors" class="invalid-feedback">
+                <div *ngIf="angForm.controls.proxyUserPwd.errors.required">Proxy User Password is required</div>
+                <div *ngIf="angForm.controls.proxyUserPwd.errors.minlength">Proxy User Password must be at least 8 characters</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<button type="button" class="btn btn-primary" style="margin-left: 50px;" (click)="close()">Close</button>&nbsp;-->
+        <button type="button" class="btn btn-success" style="margin-left: 5px; margin-top: 10px; width: 200px; height:48px;font-size: 21px;" (click)="save()">Submit</button><br><br>
+      </form>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

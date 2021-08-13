@@ -1,0 +1,106 @@
+<div class="container table-responsive table-editable" style="margin-top: 100px;  width: 1800px;height: 130%;">
+  <div style="border-radius: 30px;">
+    <table class="table-bordered table-responsive-md table-striped text-center " style="border-radius: 10px;height: 100%;">
+      <thead>
+        <tr class="text-left" style="border-color: black;padding-left:15px;">
+          <th class="text-left" style="padding-left:20px;">OrderId</th>
+          <th class="text-left" style="padding-left:25px;width: 117px;">AccountId</th>
+          <th class="text-left" style="padding-left:20px;">Username</th>
+          <th class="text-left" style="padding-left:15px;;width: 90px;">Country</th>
+          <th class="text-left" style="padding-left:20px;">AccountType</th>
+          <th class="text-left" style="padding-left:20px;">Songs</th>
+          <th class="text-left" style="padding-left:20px;">Plays</th>
+          <th class="text-left" style="padding-left:13px;">Job Id</th>
+          <th class="text-left" style="padding-left:13px;">Proxy</th>
+          <th class="text-left" style="padding-left:20px;">Created Date</th>
+          <th class="text-left" style="padding-left:25px;">Status</th>
+          <th class="text-left"> </th>
+        </tr>
+      </thead>
+      <ng-container *ngFor="let homeData of dashboardData; index as id">
+        <tr id="row{{id}}">
+          <td id="td_{{id}}_1" [attr.rowspan]="homeData.accountCounts+1" *ngIf="homeData.accountCounts > 0 " valign="top" style="padding-top: 10px;">
+            <div class="tooltipview">
+              <input type="text" size="5" value="{{homeData.orderId}}" class="text-center" style="width: 65px; height:48px" readonly>
+              <div class="text-left tooltiptext">
+                <span class="orderId">Order Name: {{homeData.orderTitle}}</span>
+                <span class="orderId">Order details: {{homeData.orderDetail}}</span>
+                <span class="orderId">Total play amount: {{homeData.allPlays}}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input *ngIf="homeData.accountCounts <= 0;else elseAccountId" type="text" size="5" value="{{homeData.accountId}}" class="text-center" style="width: 67px; height:48px" readonly>
+            <ng-template #elseAccountId><input type="text" size="5" value="-" class="text-center" style="width: 67px; height:48px" readonly></ng-template>
+          </td>
+          <td>
+            <input *ngIf="homeData.accountCounts <= 0;else elseUsername" type="text" size="25" value="{{homeData.username}}" class="text-left" style="width: 205px; height:48px;" (keyup)="changeValue(id, 'Username', $event)" (blur)="updateList(id, 'Username', $event)" readonly>
+            <ng-template #elseUsername><input type="text" size="25" value="-" class="text-left" style="width: 205px; height:48px;" (keyup)="changeValue(id, 'Username', $event)" (blur)="updateList(id, 'Username', $event)" readonly></ng-template>
+          </td>
+          <td>
+            <div class="tooltipshow">
+              <img *ngIf="homeData.accountCounts <= 0;else elseCountry" src="assets/img/country/{{homeData.country | lowercase }}_44x30.png" style="width: 56px; height:40px">
+              <ng-template #elseCountry><img src="assets/img/country/none.png" style="width: 56px; height:40px"></ng-template>
+              <div class="tooltiptext" *ngIf="homeData.accountCounts <= 0">
+                <span style="font-size: 10px;display: block;padding: 2px 0px;"> {{homeData.country}} </span>
+                <span style="font-size: 8px;display: block;padding: 2px 2px;"> {{homeData.proxyIpAddress}} </span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input *ngIf="homeData.accountCounts <= 0;else elseAccountType" type="text" size="15" value="{{homeData.accountType}}" class="text-center" style="width: 139px; height:48px;" (keyup)="changeValue(id, 'AccountType', $event)" (blur)="updateList(id, 'AccountType', $event)" readonly>
+            <ng-template #elseAccountType><input type="text" size="15" value="-" class="text-center" style="width: 139px; height:48px;" (keyup)="changeValue(id, 'AccountType', $event)" (blur)="updateList(id, 'AccountType', $event)" readonly></ng-template>
+          </td>
+          <td>
+            <input type="text" size="50" value="{{homeData.songs}}" class="text-left" style="background-color: #1ED760; width: 256px; height:48px" readonly>
+          </td>
+          <td>
+            <input type="text" size="10" id="plays_{{homeData.orderId}}_{{ homeData.accountId }}" value="{{homeData.currentPlays}}/{{homeData.allPlays}}" class="text-center" style="background-color: #343434; width: 123px; height:48px" (keyup)="changeValue(id, 'IpAddress', $event)" (blur)="updateList(id, 'IpAddress', $event)" readonly>
+          </td>
+          <td>
+            <input type="text" size="5" value="{{homeData.jobId}}" class="text-center" style="width: 65px; height:48px" (keyup)="changeValue(id, 'Port', $event)" (blur)="updateList(id, 'Port', $event)" readonly>
+          </td>
+          <td>
+            <div class="tooltipshow">
+              <img *ngIf="homeData.accountCounts <= 0;else elseProxyCountry" src="assets/img/country/{{homeData.proxyCountry | lowercase }}_44x30.png" style="width: 56px; height:40px">
+              <ng-template #elseProxyCountry><img src="assets/img/country/none.png" style="width: 56px; height:40px"></ng-template>
+              <div class="tooltiptext" *ngIf="homeData.accountCounts <= 0">
+                <span style="font-size: 10px;display: block;padding: 2px 0px;"> {{homeData.proxyCountry}} </span>
+                <span style="font-size: 8px;display: block;padding: 2px 2px;"> {{homeData.proxyIpAddress}} </span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input type="text" size="12" value="{{homeData.createdDate}}" class="text-center" style="width: 123px; height:48px" (keyup)="changeValue(id, 'IpAddress', $event)" (blur)="updateList(id, 'IpAddress', $event)" readonly>
+          </td>
+          <td style="padding: 0px 15px;" align="center">
+            <div class="dropdown">
+              <div class="selState" id="status_{{homeData.orderId}}_{{homeData.accountId}}" *ngIf="homeData.status == 'LoggedIn';else elseStatus">{{homeData.status}}</div>
+              <ng-template #elseStatus><div class="selState" id="status_{{homeData.orderId}}_{{homeData.accountId}}" style="color:#FF0000">{{homeData.status}}</div></ng-template>
+              <button mat-icon-button class="stateSelector" (click)="menuShow(id)">
+                <img src="assets/img/combo_icon.png" style="padding: 0px">
+              </button>
+              <div id="myDropdown{{id}}" class="text-left dropdown-content">
+                <div class="menuButton" (click)="StatusChange(1,id,homeData.orderId,homeData.accountId)">
+                  <img src="assets/img/play_sel.png" style="padding:2px 5px;" id='menuButtonIconId1'>
+                  <span class="menuButtonText" style="color: #1ec045">Play</span>
+                </div>
+                <div class="menuButton" (click)="StatusChange(2,id,homeData.orderId,homeData.accountId)">
+                  <img src="assets/img/pause_none.png" style="padding: 2px 5px;" id='menuButtonIconId2'>
+                  <span class="menuButtonText">Pause</span>
+                </div>
+                <div class="menuButton" (click)="StatusChange(3,id,homeData.orderId,homeData.accountId)">
+                  <img src="assets/img/del_none.png" style="padding: 2px 5px;" id='menuButtonIconId3'>
+                  <span class="menuButtonText">Delete</span>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td id="td_{{id}}_2" [attr.rowspan]="homeData.accountCounts + 1" *ngIf="homeData.accountCounts > 0" valign="top" style="padding-top: 10px">
+            <img id="collapseImgId{{id}}" src="assets/img/up.png" style="width:64px; height: 48px;" (click)="toggleCollapse(id, homeData.accountCounts)">
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</div>

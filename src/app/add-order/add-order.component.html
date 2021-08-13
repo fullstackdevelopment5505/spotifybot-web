@@ -1,0 +1,83 @@
+<img src="assets/img/close.png" class="closeButton" (click)="close()">
+<mat-dialog-content>
+      <div class="userpart">
+        <form [formGroup]="orderForm" (ngSubmit) = 'save()'>
+          <div class="row" style="magrin: 0px; height: 100px;">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="contTitle">Order Title</label>
+              </div>
+            </div>
+            <div class="col-9" style="padding: 0px 5px;">
+              <div class="form-group">
+                <input matInput type="text" formControlName="orderTitle" class="form-control" [ngClass] ="{'is-invalid':submitted && orderForm.controls.orderTitle.errors}" >
+                <div *ngIf="submitted && orderForm.controls.orderTitle.errors" class="invalid-feedback">
+                  <div *ngIf="orderForm.controls.orderTitle.errors.required">Order title is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="magrin: 0px; height: 100px;">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="contTitle">Track ID</label>
+              </div>
+            </div>
+            <div class="col-9" style="padding: 0px 5px;">
+              <div class="form-group">
+                <input matInput type="text" formControlName="trackId" class="form-control" [ngClass] ="{'is-invalid':submitted && orderForm.controls.trackId.errors}" >
+                <div *ngIf="submitted && orderForm.controls.trackId.errors" class="invalid-feedback">
+                  <div *ngIf="orderForm.controls.trackId.errors.required">Track ID is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="magrin: 0px; height: 100px;">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="contTitle">Track Title</label>
+              </div>
+            </div>
+            <div class="col-9" style="padding: 0px 5px;">
+              <div class="form-group">
+                <input matInput type="text" formControlName="trackTitle" class="form-control" [ngClass] ="{'is-invalid':submitted && orderForm.controls.trackTitle.errors}" >
+                <div *ngIf="submitted && orderForm.controls.trackTitle.errors" class="invalid-feedback">
+                  <div *ngIf="orderForm.controls.trackTitle.errors.required">Track title is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="magrin: 0px; height: 100px;">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="contTitle">Required Play Count</label>
+              </div>
+            </div>
+            <div class="col-9" style="padding: 0px 5px;">
+              <div class="form-group">
+                <input matInput type="text" formControlName="reqCount" class="form-control" [ngClass] ="{'is-invalid':submitted && orderForm.controls.reqCount.errors}" >
+                <div *ngIf="submitted && orderForm.controls.reqCount.errors" class="invalid-feedback">
+                  <div *ngIf="orderForm.controls.reqCount.errors.required">Required Play Count is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="magrin: 0px; height: 100px;">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="contTitle">Order Description</label>
+              </div>
+            </div>
+            <div class="col-9" style="padding: 0px 5px;">
+              <div class="form-group">
+                <input matInput type="text" formControlName="orderDpt" class="form-control" [ngClass] ="{'is-invalid':submitted && orderForm.controls.orderDpt.errors}" >
+                <div *ngIf="submitted && orderForm.controls.orderDpt.errors" class="invalid-feedback">
+                  <div *ngIf="orderForm.controls.orderDpt.errors.required">Order description is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" style="margin-left: 5px; margin-top: 4px; width: 200px; height:48px;font-size: 21px;" (click)="save()">Submit</button><br><br>
+        </form>
+      </div>
+</mat-dialog-content>

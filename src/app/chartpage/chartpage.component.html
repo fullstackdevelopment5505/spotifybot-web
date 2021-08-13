@@ -1,0 +1,40 @@
+<div class="container table-responsive table-editable" style="margin-top: 100px;  width: 1800px;height: 100%;">
+  <div style="border-radius: 30px;">
+    <table class="table-bordered table-responsive-md table-striped text-center ">
+      <tr>
+        <th class="text-left headerTitle" colspan="5">Charts</th>
+      </tr>
+      <tr style="font-size: 18px;">
+        <td class="text-left" style="padding-left: 38px;font: 21px 'TT Commons' !important; font-weight: 600;">Ranking</td>
+        <td class="text-left" style="padding-left: 40px;font: 21px 'TT Commons' !important; font-weight: 600;">Track</td>
+        <!--<td class="text-left" style="padding-left: 35px;font: 21px 'TT Commons' !important; font-weight: 600;">Country</td>-->
+        <td class="text-left" style="padding-left: 25px;font: 21px 'TT Commons' !important; font-weight: 600;">Daily|Weekly</td>
+        <td class="text-left" style="padding-left: 30px;font: 21px 'TT Commons' !important; font-weight: 600;">Stream</td>
+      </tr>
+      <tr *ngFor="let chart of chartDataList; let id = index" class="datarow" >
+        <td>
+          <input type="text" size="7" value="{{chart.rank}}" style="width:51px; height: 48px;" class="text-center" readonly>
+        </td>
+        <td align="left" style="padding-left: 40px;">
+          <input type="text" size="80" value="{{chart.trackTitle}}" class="text-left" style="padding-left:15px; width:309px; height: 48px;" (keyup)="changeValue(id, 'Username', $event)" (blur)="updateList(id, 'Username', $event)" readonly>
+        </td>
+        <!--<td width="120px">-->
+          <!--<div class="tooltipshow">-->
+            <!--<img src="assets/img/country/{{chart.Country}}_44x30.png" style="width:56px; height: 40px;">-->
+            <!--<div class="tooltiptext">-->
+              <!--<span style="font-size: 10px;display: block;padding: 2px 0px;"> {{chart.CountryName}} </span>-->
+              <!--<span style="font-size: 8px;display: block;padding: 2px 2px;"> {{chart.IpAddress}} </span>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</td>-->
+        <td>
+          <input type="text" size="12" value="{{chart.daily}}" style="width:174px; height: 48px;" class="text-center daily" (keyup)="changeValue(id, 'AccountType', $event)" (blur)="updateList(id, 'AccountType', $event)" readonly>
+
+        </td>
+        <td>
+          <input type="text" size="20" value="{{chart.stream}}" style="width:194px; height: 48px;" class="text-center" readonly>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

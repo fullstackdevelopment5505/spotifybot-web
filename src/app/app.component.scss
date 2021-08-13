@@ -1,0 +1,32 @@
+
+.my-container {
+    margin-top: 160px;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+a.nav-link.active{
+  color: #1ECC5C !important;
+  border-bottom: 2px solid #1ECC5C;
+  padding: 45px 5px !important;
+}
+a.nav-link{
+  color: #FFFFFF;
+  padding: 45px 5px !important;
+  margin: 0px 50px !important;
+}
+
+li.active{
+  border-bottom: 1px solid #FF0000;
+}
+
+.logo{
+  margin-left: 70px;
+  padding-top: 35px ;
+  padding-right: 15px;
+}
+
